@@ -1,0 +1,8 @@
+<ul class="post-list">
+    $for(posts)$
+        <li>
+            <a href="$url$">$title$</a> - $date$
+            $if(snippet)$ <br><div class="snippet">$snippet$</div>$endif$
+        </li>
+    $endfor$
+</ul>
