@@ -7,13 +7,26 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "images/*" $ do
+    match "images/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "css/images/**" $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match "fonts/**" $ do
         route   idRoute
         compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
+
+
+    match "js/*" $ do
+        route   idRoute
+        compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"

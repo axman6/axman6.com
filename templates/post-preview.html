@@ -1,0 +1,15 @@
+<section id="posts-preview">
+	<h2>Posts</h2>
+	<div class="row">
+    $for(posts)$
+      <article class="6u 12u$$(xsmall) work-item">
+        $if(image)$<a href="$url$" class="image fit thumb"><img src="images/thumbs/$image$" alt="" /></a>
+				$else$     <a href="$url$" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>$endif$
+
+        <h3><a href="$url$">$title$</a></h3>
+        <small>$date$</small>
+        $if(snippet)$ <br/><p class="snippet">$snippet$</p>$endif$
+      </article>
+    $endfor$
+	</div>
+</section>
