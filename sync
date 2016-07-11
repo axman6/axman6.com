@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -x
+aws --profile=personal-axman6 s3 sync _site s3://axman6.com --exclude '*.DS_Store' --delete
