@@ -1,0 +1,39 @@
+pristine:0000000563-1170a92822c10f8860926c45364d92e4b4a86ac882685bad21aa246b289cb837
+Starting with inventory:
+0000001891-725cae25e963279b1abce6a0c9ba4d62e101113414ab879425bbe4c2968aba47
+[TAG 0.1.3.0
+axman6@gmail.com**20090702151614
+ Ignore-this: c7fd0a83107d5f604242fa6155e6d944
+] 
+hash: 0000001315-353ac620b23d9f6aeff4c7298030144da0cf0faccaae1bfd4a05a2cfa9947d57
+[Added .Internal modules
+axman6@gmail.com**20090702151657
+ Ignore-this: 6b0adbc05928a90a74c00ca4a862b214
+ 
+ * Moved the datatype definitions out into .Internal modules, so the types
+   can be tested, while not needing to export the definitions in the main
+   modules.
+ 
+ * Made some small changes after running HLint on the source.
+  
+ * Removed some unneeded commented out code.
+ 
+ * Changed to version 1.3.0.0
+ 
+] 
+hash: 0000009810-2c03f05fd51782e3b063dd539d75a085fb5300e63242d591a7017d3bf62ea0bb
+[Fixed .cabal file and removed accidental main = ... in /Data/Map/TernaryMap/Internal.hs
+axman6@gmail.com**20090702152437
+ Ignore-this: 108aedce91724ac95d71048c25fd7d8d
+] 
+hash: 0000000421-508f30d6ef238e8b1d0bc71dfd36b61969ed92c34fbbb5c35fcd675971f2772d
+[Fixed haddock building and documented datatypes
+axman6@gmail.com**20091015054119
+ Ignore-this: 1dbce41be8d908c1958d03958f86beb4
+] 
+hash: 0000001763-9506fd0903c9f9e59c98e061c2852df8e2f0b472bc53b2b6a7d75a371f84d816
+[Added StringMap to the package
+axman6@gmail.com**20100717011104
+ Ignore-this: 346533b9a56ed32b3fbd0d4cf10285d2
+] 
+hash: 0000003216-e24311b6034211e0f57a6fb446bd0e1f943ff7fbd6eb3ff8f5ebf171e1db6634

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+darcs push axman6_randomblog@ssh.phx.nearlyfreespeech.net:/home/public/darcs/Phroxy

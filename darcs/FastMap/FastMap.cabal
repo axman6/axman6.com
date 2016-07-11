@@ -1,0 +1,30 @@
+Name:                   FastMap
+Version:                0.0.0.1
+Category:               Data Structures
+Synopsis:               Space efficient, fast, key-value maps using type families
+Description:            FastMaps use type families to specialise maps from keys to
+			Ints, which are then used to index an array containing the
+			the map values. This should reduce space usage, by avoiding
+			indirection in the map, and allows for unboxed arrays to be
+			used to store the values, if they can be unboxed.
+			.
+			The package currently does not support deletion.
+			.
+			&#169; 2009 by Alex Mason (<http://random.axman6.com/blog/>). BSD3 license.
+			
+License:                BSD3
+License-file:           LICENSE.txt
+Author:                 Alex Mason
+Maintainer:             Alex Mason (irc: Axman6) <axman6@gmail.com>
+build-type:             Simple
+Cabal-Version:          >= 1.2
+Extra-Source-Files:
+        Data/Map/FastMap.hs
+        Data/Map/MapKey.hs
+
+
+Library
+        Build-Depends:
+                base >= 4.0.0.0, base < 5.0.0.0, vector >= 0.6.0.0
+        Exposed-modules:
+                Data.Map.FastMap, Data.Map.FastMap.MapKey

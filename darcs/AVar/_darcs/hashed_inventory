@@ -1,0 +1,21 @@
+pristine:0000000370-d4684fe3f1618fda75b4bc7680b9598f63f2307d7d6b358315aab3b0a03092e1
+Starting with inventory:
+0000000571-2a8ca2d455f373dbf44d484e87541f9c175f4ced339fec8165c6e62d813256b5
+[TAG 0.0.3
+Alex Mason <axman6@gmail.com>**20090218153744] 
+hash: 0000000305-9dc2aa7b2832adc96421e4104c8b2136792f247cc76b264c6afc58ac94ef0a76
+[Better description of AVar
+Alex Mason <axman6@gmail.com>**20090219142516] 
+hash: 0000000771-b408ae1abd6a321626a7548336ccac417f9546d4684ace4d8833e0a489e64721
+[Splitting of AVar into modules
+Alex Mason <axman6@gmail.com>**20090221052204
+ 
+ After a blog comment, i decided i should split AVar into some more modules, so i could provide an unsafe interface. There ire or three modules: Data.AVar, Data.AVar.Unsafe and Data.AVar.Internal, the last of which contains the actual AVar.
+ 
+] 
+hash: 0000005671-17781b67d68ecd78cfc60ff18d25f9b230babc7fc6b4753e672ef71649610508
+[Added new interface files (Unsafe and Internal)
+Alex Mason <axman6@gmail.com>**20090629161543
+ Ignore-this: 417bbc702dca2eb0ea9245d6ebdf06dc
+] 
+hash: 0000007168-c925ffbb3c7553060ccbd612821132467853f047d75ef40564782f3a5c451835

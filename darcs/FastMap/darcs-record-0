@@ -1,0 +1,17 @@
+Decided on using IO initially
+***END OF DESCRIPTION***
+
+Place the long patch description above the ***END OF DESCRIPTION*** marker.
+The first line of this file will be the patch name.
+
+
+This patch contains the following changes:
+
+A ./Data/
+A ./Data/Map/
+A ./Data/Map/FastMap/
+A ./Data/Map/FastMap.hs
+A ./Data/Map/FastMap2.hs
+R ./FastMap.hs
+R ./FastMap2.hs
+R ./MapKey.hs
