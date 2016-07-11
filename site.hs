@@ -7,29 +7,19 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-    match "images/**" $ do
-        route   idRoute
-        compile copyFileCompiler
+    mapM_ copyFiles
+      ["images/**"
+      ,"js/**"
+      ,"css/images/**"
+      ,"fonts/**"
+      ,"darcs/**"
+      ,"keybase.txt"
+      ]
 
-    match "css/images/**" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "fonts/**" $ do
-        route   idRoute
-        compile copyFileCompiler
 
     match "css/*" $ do
         route   idRoute
         compile compressCssCompiler
-
-    match "keybase.txt" $ do
-        route   idRoute
-        compile copyFileCompiler
-
-    match "js/*" $ do
-        route   idRoute
-        compile copyFileCompiler
 
     match (fromList ["about.rst", "contact.markdown"]) $ do
         route   $ setExtension "html"
@@ -75,6 +65,10 @@ main = hakyll $ do
 
     match "templates/*" $ compile templateCompiler
 
+copyFiles f =
+      match f $ do
+        route   idRoute
+        compile copyFileCompiler
 
 --------------------------------------------------------------------------------
 postCtx :: Context String
