@@ -23,6 +23,9 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
+    match "keybase.txt" $ do
+        route   idRoute
+        compile copyFileCompiler
 
     match "js/*" $ do
         route   idRoute

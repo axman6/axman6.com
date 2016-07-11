@@ -1,0 +1,55 @@
+==================================================================
+https://keybase.io/axman6
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://axman6.com
+  * I am axman6 (https://keybase.io/axman6) on keybase.
+  * I have a public key ASDRJGBz9LCxzTkIG-QeHrvptyisRGUkkQzePU6yy36uugo
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101cb832e2d37d0534dc726c3568b8c93c1f489ede06b8c4afaa01761ffacd038830a",
+            "host": "keybase.io",
+            "kid": "0120d1246073f4b0b1cd39081be41e1ebbe9b728ac446524910cde3d4eb2cb7eaeba0a",
+            "uid": "4d275dcf889a6f81383a999287b9f419",
+            "username": "axman6"
+        },
+        "service": {
+            "hostname": "axman6.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "client": {
+        "name": "keybase.io go client",
+        "version": "1.0.16"
+    },
+    "ctime": 1468152843,
+    "expire_in": 504576000,
+    "merkle_root": {
+        "ctime": 1468152748,
+        "hash": "3301fed8974165e72e1f4424b66feaf10ac43757ceb515251f9abedc85349c15d5ac11e0ac7eb4dd8a3c705e3203143eb3dcaf36a0c2719fd14a1fbd8863a9d0",
+        "seqno": 516447
+    },
+    "prev": "bbb8a3d4c2e394bcdb573a32d87a9d99aa30431662e4112d331af7b20893a8c1",
+    "seqno": 14,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg0SRgc/Swsc05CBvkHh676bcorERlJJEM3j1Osst+rroKp3BheWxvYWTFAvB7ImJvZHkiOnsia2V5Ijp7ImVsZGVzdF9raWQiOiIwMTAxY2I4MzJlMmQzN2QwNTM0ZGM3MjZjMzU2OGI4YzkzYzFmNDg5ZWRlMDZiOGM0YWZhYTAxNzYxZmZhY2QwMzg4MzBhIiwiaG9zdCI6ImtleWJhc2UuaW8iLCJraWQiOiIwMTIwZDEyNDYwNzNmNGIwYjFjZDM5MDgxYmU0MWUxZWJiZTliNzI4YWM0NDY1MjQ5MTBjZGUzZDRlYjJjYjdlYWViYTBhIiwidWlkIjoiNGQyNzVkY2Y4ODlhNmY4MTM4M2E5OTkyODdiOWY0MTkiLCJ1c2VybmFtZSI6ImF4bWFuNiJ9LCJzZXJ2aWNlIjp7Imhvc3RuYW1lIjoiYXhtYW42LmNvbSIsInByb3RvY29sIjoiaHR0cDoifSwidHlwZSI6IndlYl9zZXJ2aWNlX2JpbmRpbmciLCJ2ZXJzaW9uIjoxfSwiY2xpZW50Ijp7Im5hbWUiOiJrZXliYXNlLmlvIGdvIGNsaWVudCIsInZlcnNpb24iOiIxLjAuMTYifSwiY3RpbWUiOjE0NjgxNTI4NDMsImV4cGlyZV9pbiI6NTA0NTc2MDAwLCJtZXJrbGVfcm9vdCI6eyJjdGltZSI6MTQ2ODE1Mjc0OCwiaGFzaCI6IjMzMDFmZWQ4OTc0MTY1ZTcyZTFmNDQyNGI2NmZlYWYxMGFjNDM3NTdjZWI1MTUyNTFmOWFiZWRjODUzNDljMTVkNWFjMTFlMGFjN2ViNGRkOGEzYzcwNWUzMjAzMTQzZWIzZGNhZjM2YTBjMjcxOWZkMTRhMWZiZDg4NjNhOWQwIiwic2Vxbm8iOjUxNjQ0N30sInByZXYiOiJiYmI4YTNkNGMyZTM5NGJjZGI1NzNhMzJkODdhOWQ5OWFhMzA0MzE2NjJlNDExMmQzMzFhZjdiMjA4OTNhOGMxIiwic2Vxbm8iOjE0LCJ0YWciOiJzaWduYXR1cmUifaNzaWfEQJGfXWY9YFZH0MeoGD3QCsw+aVPSRnxXFYGnQ50PlsEjPcUD3aMTC9TlVKRgSrVl68J11PJ+y9o+QB4IFOQSuweoc2lnX3R5cGUgpGhhc2iCpHR5cGUIpXZhbHVlxCBGcOa7NeBz1me9yCFcSQ5P0r4j8NQvhCk3l1ZRuznDdKN0YWfNAgKndmVyc2lvbgE=
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/axman6
+
+==================================================================
+
