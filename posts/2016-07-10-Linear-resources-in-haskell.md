@@ -1,5 +1,8 @@
 ---
 title: Linear resources in Haskell
+snippet: Exploring the implementation of linear types in Haskell.
+author: Alex Mason
+draft: true
 ---
 
 A few months ago, I was reading through [Polarised Data Parallel Data Flow](http://benl.ouroborus.net/papers/2016-polarized/dpdf-FHPC2016-sub.pdf), and noticed there were some invariants which needed to be kept in mind when using the library, mainly that streams must only be consumed once. It seemed to me that with all the power of Haskell's type system, we could do something about this.
