@@ -10,9 +10,14 @@ import Data.Aeson.TH
 import Network.Wai
 import Network.Wai.Handler.Warp
 import Network.Wai.Handler.WarpTLS
-import Network.Wai.Middleware.Gzip
+import Network.Wai.Application.Static
 import Servant
 import Servant.Utils.StaticFiles (serveDirectory)
+
+import Network.Wai.Middleware.Gzip
+import Network.Wai.Middleware.RequestLogger
+import Network.Wai.Middleware.Autohead
+import Network.Wai.Middleware.ForceSSL
 
 data User = User
   { userId        :: Int
@@ -22,8 +27,10 @@ data User = User
 
 $(deriveJSON defaultOptions ''User)
 
-type API = "users" :> Get '[JSON] [User]
-  :<|> Raw
+type API = Raw
+
+  -- "users" :> Get '[JSON] [User]
+  -- :<|> Raw
 
 startApp :: IO ()
 startApp = runTLS
@@ -37,13 +44,20 @@ app = serve api server
 
 middlewares :: Middleware
 middlewares =
-  gzip def{gzipFiles = GzipCacheFolder "tmp"}
+  logStdout
+  . forceSSL
+  . gzip def{gzipFiles = GzipCacheFolder "tmp"}
+  . autohead
 
 api :: Proxy API
 api = Proxy
 
 server :: Server API
-server = return users :<|> serveDirectory "_site"
+server = staticApp (defaultWebAppSettings "_site")
+  { ssListing = ssListing (defaultFileServerSettings "_site")
+  , ssIndices = ssIndices (defaultFileServerSettings "_site")
+  }
+  -- serveDirectory "_site"
 
 users :: [User]
 users = [ User 1 "Isaac" "Newton"

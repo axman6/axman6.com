@@ -23,6 +23,7 @@ library
                      , warp
                      , warp-tls
                      , wai-extra
+                     , wai-app-static
   default-language:    Haskell2010
 
 executable serve
