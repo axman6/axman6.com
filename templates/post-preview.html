@@ -7,7 +7,7 @@
 				$else$     <a href="$url$" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>$endif$
 
         <h3><a href="$url$">$title$</a></h3>
-        <small>$date$</small>
+        <small>$date$</small>$if(draft)$ <span class="draft">DRAFT</span>$endif$
         $if(snippet)$ <br/><p class="snippet">$snippet$</p>$endif$
       </article>
     $endfor$
