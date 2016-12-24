@@ -6,6 +6,10 @@ figure{
 .draft {
   color: rgb(213, 98, 86);
 }
+.info {
+  font-size: small;
+}
+
   /* Loosely based on pygment's default colors */
   table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode, table.sourceCode pre
      { margin: 0; padding: 0; border: 0; vertical-align: baseline; border: none; }

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 set -x
-aws --profile=personal-axman6 s3 sync _site s3://axman6.com --exclude '*.DS_Store' --delete
+aws --profile=personal-axman6 --region ap-southeast-2 s3 sync _site s3://axman6.com --exclude '*.DS_Store' --delete
