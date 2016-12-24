@@ -19,13 +19,6 @@ import Network.Wai.Middleware.RequestLogger
 import Network.Wai.Middleware.Autohead
 import Network.Wai.Middleware.ForceSSL
 
-data User = User
-  { userId        :: Int
-  , userFirstName :: String
-  , userLastName  :: String
-  } deriving (Eq, Show)
-
-$(deriveJSON defaultOptions ''User)
 
 type API = Raw
 
@@ -58,8 +51,3 @@ server = staticApp (defaultWebAppSettings "_site")
   , ssIndices = ssIndices (defaultFileServerSettings "_site")
   }
   -- serveDirectory "_site"
-
-users :: [User]
-users = [ User 1 "Isaac" "Newton"
-        , User 2 "Albert" "Einstein"
-        ]
