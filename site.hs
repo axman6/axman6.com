@@ -5,6 +5,15 @@ import           Hakyll
 
 
 --------------------------------------------------------------------------------
+myFeedConfiguration :: FeedConfiguration
+myFeedConfiguration = FeedConfiguration
+    { feedTitle       = "Axman6.com"
+    , feedDescription = "Haskell, Cloud, Electronics and more"
+    , feedAuthorName  = "Alex Mason"
+    , feedAuthorEmail = "axman6@gmail.com"
+    , feedRoot        = "http://axman6.com"
+    }
+
 main :: IO ()
 main = hakyll $ do
     mapM_ copyFiles
@@ -31,6 +40,7 @@ main = hakyll $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
+            >>= saveSnapshot "post-content"
             >>= loadAndApplyTemplate "templates/default.html" postCtx
             >>= relativizeUrls
 
@@ -62,6 +72,14 @@ main = hakyll $ do
                 >>= applyAsTemplate indexCtx
                 >>= loadAndApplyTemplate "templates/default.html" indexCtx
                 >>= relativizeUrls
+
+    create ["atom.xml"] $ do
+      route idRoute
+      compile $ do
+          let feedCtx = postCtx `mappend` bodyField "description"
+          posts <- fmap (take 10) . recentFirst =<<
+              loadAllSnapshots "posts/*" "post-content"
+          renderAtom myFeedConfiguration feedCtx posts
 
     match "templates/*" $ compile templateCompiler
 

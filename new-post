@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+cat <<ENDCAT > ./posts/$(date "+%Y-%m-%d")-$(echo -n "$1" | tr -c '[[:alnum:]]._-' -).md
+---
+title: $1
+snippet:
+author: Alex Mason
+draft: true
+ident: `uuid -v 4`
+---
+
+ENDCAT
