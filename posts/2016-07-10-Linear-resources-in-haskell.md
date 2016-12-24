@@ -2,7 +2,9 @@
 title: Linear resources in Haskell
 snippet: Exploring the implementation of linear types in Haskell.
 author: Alex Mason
-draft: true
+ident: 24b218cf-c395-4a06-92f8-99d7a17655ab
+image: fractal_golden_ratio.jpg
+image-attr: fracme / stockarch.com (http://stockarch.com/images/abstract/patterns/green-shell-lines-2119)
 ---
 
 A few months ago, I was reading through [Polarised Data Parallel Data Flow](http://benl.ouroborus.net/papers/2016-polarized/dpdf-FHPC2016-sub.pdf), and noticed there were some invariants which needed to be kept in mind when using the library, mainly that streams must only be consumed once. It seemed to me that with all the power of Haskell's type system, we could do something about this.
@@ -129,42 +131,67 @@ There's a lot going on in this type, so let's walk through it.
 6. the wrapped resource is returned, marhed with its index.
 
 
-
+The other side of this is resource consumption. To consume a resource, we need to ensure that the given resource hasn't been consumed elsewhere, and that once it is consumed, we remove its index from the list of in scope resources.
 
 ```haskell
-consume :: (Find q is ~ 'True, os ~ Remove q is)
-        => Resource q a
+consume :: (Find i is ~ 'True, os ~ Remove i is)
+        => Resource i a
         -> (a -> p b)
         -> Linear p (L n is) (L n os) b
 consume (Res x) f = Linear (f x)
+```
 
+Here we first check that index `i` is present in the input list of resources `is`. We also remove set the output list `os` to the input list with `i` `Remove`d. Then we pass in the wrapped resource and the function in the underlying monad which will deallocate the resource.
+
+Along similar lines, we could implement a function for using the resource while it's in scope but which doesn't deallocate it - if you wanted to ensure that resources were only ever used once, as in the original problem, then we would omit this function.
+
+```haskell
+utilise :: (Find i is ~ 'True)
+        => Resource i a
+        -> (a -> p b)
+        -> Linear p (L n is) (L n is) b
+utilise (Res x) f = Linear (f x)
+```
+Note that the only change is that `i` is not removed from the output, and everything else is identical to `consume`.
+
+Finally we can provide a function to run a computation, which ensures that the resource index starts at zero, and ensures that all resources are consumed.
+
+```haskell
 runLinear :: KnownNat m => Linear p (L 0 '[]) (L m '[]) a -> p a
 runLinear (Linear x) = x
+```
 
-starting :: (KnownNat m) => Linear p (L 0 '[]) (L m os) a -> Linear p (L 0 '[]) (L m os) a
-starting x = x
+which can be used like so
 
+```haskell
+main :: IO ()
+main = runLinear $
+  allocate openFile >>>= \f0 ->
+  allocate openFile >>>= \f1 ->
+  consume f0 closeFile >>>= \_ ->
+  allocate openFile >>>= \f2 ->
+  consume f2 closeFile >>>= \_ ->
+  consume f1 closeFile
+```
+
+Notice that the resources are consumed in a different order from the order they were allocated. This is something that differentiates this technique from something like Golang's `defer`.
+
+Now for the problem. Using the library works well when used like this, but it doesn't allow you to define composable actions. The problem is that GHC isn't s enough to smart enough when composing actions to realise that `Find i (Insert i is)` is always true when it doesn't know what `is` is. I had tried just cons'ing `i` onto `is` but this only helps in the situation where a resource being consumed is the most recently allocated one. For example, I can define `test1` with the type shown, but I can't define it with either of the other two, which are the types GHC tried to infer
+
+```haskell
 -- test1 :: Linear IO (L n '[]) (L (n+3) '[]) ()
 -- test1 :: Linear IO (L n '[]) (L (((n+1)+1)+1) '[]) ()
--- test1 :: Linear IO (L 0 '[]) (L (3) '[]) ()
+test1 :: Linear IO (L 0 '[]) (L 3 '[]) ()
 test1 =
-    allocate getLine >>>= \l0 ->
-    allocate getLine >>>= \l1 ->
-    consume l0 print >>>= \_ ->
-    allocate getLine >>>= \l2 ->
-    consume l2 print >>>= \_ ->
-    consume l1 print
---
--- runLinear' :: (KnownNat m, Functor p) => Linear p (L 0 '[]) (L m '[]) a -> p (a,Integer)
--- runLinear' (Linear x) = fmap (,natVal' (proxy# :: Proxy# m)) x
-
-main :: IO ()
-main = do
-  runLinear $
-    allocate getLine >>>= \l0 ->
-    allocate getLine >>>= \l1 ->
-    consume l0 print >>>= \_ ->
-    allocate getLine >>>= \l2 ->
-    consume l2 print >>>= \_ ->
-    consume l1 print
+  allocate openFile >>>= \f0 ->
+  allocate openFile >>>= \f1 ->
+  consume f0 closeFile >>>= \_ ->
+  allocate openFile >>>= \f2 ->
+  consume f2 closeFile >>>= \_ ->
+  consume f1 closeFile
 ```
+
+
+To solve this, I'd love to see type level Sets which allow for tests like `Find i (Add i s)` to be true for all `s`.
+
+I'd love to hear what others have to say about this idea, and alternative methods which can be used to implement similar ideas.
