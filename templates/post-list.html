@@ -1,7 +1,7 @@
 <ul class="post-list">
     $for(posts)$
         <li>
-            <a href="$url$">$title$</a> - $date$
+            <a href="$url$#disqus_thread">$title$</a> - $date$
             $if(snippet)$ <br><div class="snippet">$snippet$</div>$endif$
         </li>
     $endfor$

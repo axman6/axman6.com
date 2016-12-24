@@ -2,14 +2,21 @@
 	<h2>Posts</h2>
 	<div class="row">
     $for(posts)$
-      <article class="6u 12u$$(xsmall) work-item">
-        $if(image)$<a href="$url$" class="image fit thumb"><img src="images/thumbs/$image$" alt="" /></a>
-				$else$     <a href="$url$" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>$endif$
+			$if(draft)$ $else$
+	      <article class="6u 12u$$(xsmall) work-item">
+	        $if(image)$<a href="$url$" class="image fit thumb"><img src="images/thumbs/$image$" alt="" /></a>
+					$else$     <a href="$url$" class="image fit thumb"><img src="images/thumbs/01.jpg" alt="" /></a>$endif$
 
-        <h3><a href="$url$">$title$</a></h3>
-        <small>$date$</small>$if(draft)$ <span class="draft">DRAFT</span>$endif$
-        $if(snippet)$ <br/><p class="snippet">$snippet$</p>$endif$
-      </article>
+					<a href="$url$#disqus_thread" data-disqus-identifier="$ident$" class="icon fa-comments disqus-comment-count" style="float: right;">
+						<span class="label">Comments</span>
+					</a>
+
+	        <h3><a href="$url$">$title$</a></h3>
+	        <small>$date$</small>
+					$if(draft)$ <span class="draft">DRAFT</span>$endif$
+	        $if(snippet)$<br/><p class="snippet">$snippet$</p>$endif$
+	      </article>
+			$endif$
     $endfor$
 	</div>
 </section>
