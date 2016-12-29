@@ -1,0 +1,32 @@
+---
+title: About
+---
+<figure>
+  <img src="images/Headshot.jpg" alt="My face" style="width: 18em; border-radius: 0px 120px 120px 120px;"/>
+</figure>
+
+I'm Alex Mason, <a href="https://haskell.org">Haskeller</a> by day (and by night),
+currently working for <a href="https://data61.csiro.au">Data61</a>,
+a part of the <a href="https://www.csiro.au">CSIRO</a>.
+
+
+I'm the founding organiser of the Canberra Functional Programming Group,
+<a href="https://www.meetup.com/CanFPG">CanFP</a>, and have run the AusHac
+Haskell hackathons in <a href="https://wiki.haskell.org/AusHac2011">2011</a>
+and <a href="https://wiki.haskell.org/AusHac2012">2012</a>.
+
+
+I currently work on the <a href="http://nationalmap.gov.au/renewables/">AREMI</a>, the
+Australia Renewable Energy Mapping Infrastructure, building backend
+services in Haskell for geospatial data. The frontend for AREMI is
+<a href="http://github.com/NICTA/aremi-natmap">open source</a> and based
+on <a href="http://terria.io">TerriaJS</a>, an open source geospatial mapping
+framework written at Data61. The services I've built will be made open source
+soon!
+
+
+I studied at the Australian
+National University, with a focus on scientific and high performance computing,
+use Haskell throughout, but also plenty of Java, C, Ada, Python and assembly for
+various ISAs.
+

@@ -17,7 +17,7 @@ The package is based on Brendan Hay's amazing [Amazonka](https://hackage.haskell
 suite of libraries.
 
 I've tried to make things as efficient as possible, and to avoid excess memory usage if I can.
-A few of the ways I've attempted to do this are:
+A few of the ways I've attempted to do this are: 
 
 ## `mmap`ing file segments
 
