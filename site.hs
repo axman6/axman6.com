@@ -5,17 +5,21 @@ import           Hakyll
 
 
 --------------------------------------------------------------------------------
+config :: Configuration
+config = defaultConfiguration
+    {deployCommand = "./sync"}
+
 myFeedConfiguration :: FeedConfiguration
 myFeedConfiguration = FeedConfiguration
     { feedTitle       = "Axman6.com"
     , feedDescription = "Haskell, Cloud, Electronics and more"
     , feedAuthorName  = "Alex Mason"
     , feedAuthorEmail = "axman6@gmail.com"
-    , feedRoot        = "http://axman6.com"
+    , feedRoot        = "https://axman6.com"
     }
 
 main :: IO ()
-main = hakyll $ do
+main = hakyllWith config $ do
     mapM_ copyFiles
       ["images/**"
       ,"js/**"
