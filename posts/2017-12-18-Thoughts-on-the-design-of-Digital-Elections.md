@@ -1,6 +1,9 @@
 ---
-title: Thoughts on the design of Digital Elections snippet: author: Alex Mason
-draft: true ident: 07a19e56-54c0-4c77-b824-36e68cf600be
+title: Thoughts on the design of Digital Elections
+snippet:
+author: Alex Mason
+draft: true
+ident: 07a19e56-54c0-4c77-b824-36e68cf600be
 ---
 
 I have been thinking for quite some time about how a digital election system

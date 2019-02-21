@@ -31,7 +31,7 @@ file, the contents of these parks might change.
 
 ## Avoiding `ByteString.Builder`
 
-Initially I was assumulating data in the conduit streaming
+Initially I was accumulating data in the conduit streaming
 interface using a ByteString `Builder`, and then converting this to a Lazy ByteString for
 upload. It occured to me that
     
