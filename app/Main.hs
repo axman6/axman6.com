@@ -11,7 +11,6 @@ import           Network.Wai.Application.Static
 import           Network.Wai.Handler.Warp
 import           Network.Wai.Handler.WarpTLS
 import           Servant
-import           Servant.Utils.StaticFiles            (serveDirectory)
 
 import           Network.HTTP.Client                  hiding (Proxy)
 import           Network.HTTP.ReverseProxy
@@ -49,13 +48,12 @@ api = Proxy
 
 server :: Manager -> Server API
 server mgr =
-  staticApp (defaultWebAppSettings "_site")
+  Tagged (staticApp (defaultWebAppSettings "_site")
         { ssListing = ssListing (defaultFileServerSettings "_site")
         , ssIndices = ssIndices (defaultFileServerSettings "_site")
         }
-  :<|> waiProxyTo (\_req -> print _req >> (pure . WPRProxyDest $ ProxyDest "localhost" 8000)) defaultOnExc mgr
-  -- serveDirectory "_site"
-
+  )
+  :<|> Tagged (waiProxyTo (\_req -> print _req >> (pure . WPRProxyDest $ ProxyDest "localhost" 8000)) defaultOnExc mgr)
 
 
 main :: IO ()
